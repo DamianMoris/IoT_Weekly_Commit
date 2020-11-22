@@ -1,5 +1,4 @@
-#Database Tables:
-
+# Database Tables:
 
 -- Adminer 4.7.6 MySQL dump
 
