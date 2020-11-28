@@ -19,8 +19,8 @@ echo "Connected successfully";
 <?php
 $id = $conn->insert_id;
 $name = $_POST["name"];
-$lasttimestamp = date("H:i:s");
-$ip = $_POST["ip"];
+$lasttimestamp = date("d-m-Y H:i:s");
+$ip = $_SERVER['REMOTE_ADDR'];
 
 $sql = "INSERT INTO SensorTable (ID, Name, LastTimestamp, IP)
 VALUES ($id , '$name', '$lasttimestamp', '$ip')";

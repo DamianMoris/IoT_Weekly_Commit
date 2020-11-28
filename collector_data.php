@@ -17,20 +17,24 @@ echo "Connected successfully";
 
 
 <?php
-$humidity_sensor_id = SELECT SensorID FROM DataTable;
-$temperature_sensor_id = SELECT SensorID FROM DataTable;
-$lasttimestamp = date("H:i:s");
-$humidity = $_POST["humdity"];
-$temperature = $_POST["humdity"];
+$humidity_sensor_id = "SELECT ID FROM SensorTable WHERE Name = 'Humidity Sensor'";
+$temperature_sensor_id = "SELECT ID FROM SensorTable WHERE Name = 'Temperature Sensor'";
+$timestamp = date("d-m-Y H:i:s");
+$humidity = $_POST["humidity"];
+$temperature = $_POST["temperature"];
 
-$sql = "INSERT INTO SensorTable (ID, Name, LastTimestamp, IP)
-VALUES ($id , '$name', '$lasttimestamp', '$ip')";
+$result_humidity_id = $conn->query($humidity_sensor_id);
+$result_temperature_id = $conn->query($temperature_sensor_id);
 
-if ($conn->query($sql) === TRUE) {
-  echo "New record created successfully";
-} else {
-  echo "Error: " . $sql . "<br>" . $conn->error;
-}
+
+     $sql = "INSERT INTO DataTable (SensorID, Value, Timestamp)
+     VALUES ($result_humidity_id , $humidity, $timestamp)";
+
+     if ($conn->query($sql) === TRUE) {
+       echo "New record created successfully";
+     } else {
+       echo "Error: " . $sql . "<br>" . $conn->error;
+     }
 
 $conn->close();
 ?>
