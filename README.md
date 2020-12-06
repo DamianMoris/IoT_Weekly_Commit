@@ -1,4 +1,4 @@
-# Database Tables:
+# Database Tables (06/12/2020):
 
 -- Adminer 4.7.6 MySQL dump
 
