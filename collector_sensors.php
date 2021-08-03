@@ -9,14 +9,12 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Check connection
 if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+	die("Connection failed: " . $conn->connect_error);
 }
 echo "Connected successfully";
-?>
 
 
 
-<?php
 $id = $conn->insert_id;
 $name = $_POST["name"];
 $lasttimestamp = date("d-m-Y H:i:s");
@@ -26,9 +24,9 @@ $sql = "INSERT INTO SensorTable (ID, Name, LastTimestamp, IP)
 VALUES ($id , '$name', '$lasttimestamp', '$ip')";
 
 if ($conn->query($sql) === TRUE) {
-  echo "New record created successfully";
+	echo "New record created successfully";
 } else {
-  echo "Error: " . $sql . "<br>" . $conn->error;
+	echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
 $conn->close();
