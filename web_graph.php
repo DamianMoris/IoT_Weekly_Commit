@@ -15,12 +15,7 @@
 
 	$temp = '';
 	$pres = '';
-	$rows = ''; //also
-	$temp_rows = ''; //mby weg
-	$pres_rows = ''; //mby weg --> + odr shit
-	$time = ''; //also
-	$temp_time = '';
-	$pres_time = '';
+	$time = '';
 
 	//query to get data from the table
 	$sql_temp = "SELECT * FROM DataTable WHERE SensorID = 28";
@@ -29,23 +24,8 @@
 	$sql_pres = "SELECT * FROM DataTable WHERE SensorID = 29";
     $result_pres = mysqli_query($conn, $sql_pres);
 	
-	$sql_rows = "SELECT * FROM DataTable";
-    $result_rows = mysqli_query($conn, $sql_rows);
-	
-	$sql_temp_rows = "SELECT * FROM DataTable WHERE SensorID = 28";
-    $result_temp_rows = mysqli_query($conn, $sql_temp_rows);
-	
-	$sql_pres_rows = "SELECT * FROM DataTable WHERE SensorID = 29";
-    $result_pres_rows = mysqli_query($conn, $sql_pres_rows);
-	
-	$sql_time = "SELECT * FROM DataTable";
+	$sql_time = "SELECT * FROM DataTable WHERE SensorID = 29";
     $result_time = mysqli_query($conn, $sql_time);
-	
-	$sql_temp_time = "SELECT * FROM DataTable WHERE SensorID = 28";
-    $result_temp_time = mysqli_query($conn, $sql_temp_time);
-	
-	$sql_pres_time = "SELECT * FROM DataTable WHERE SensorID = 29";
-    $result_pres_time = mysqli_query($conn, $sql_pres_time);
 	
 	//loop through the returned temperature data
 	while ($row = mysqli_fetch_array($result_temp)) {
@@ -56,38 +36,11 @@
 	while ($row = mysqli_fetch_array($result_pres)) {
 			$pres = $pres . '"'. $row['Value'] .'",';
 	}
-	
-	//loop through the returned rows
-	while ($row = mysqli_fetch_array($result_rows)) {
-		$rows = $rows . '"'. $row['Row'].'",';
-	}
 
-	//loop through the returned temperature rows
-	while ($row = mysqli_fetch_array($result_temp_rows)) {
-		$temp_rows = $temp_rows . '"'. $row['Row'].'",';
-	}
-	
-	//loop through the returned pressure rows
-	while ($row = mysqli_fetch_array($result_pres_rows)) {
-		$pres_rows = $pres_rows . '"'. $row['Row'].'",';
-	}
-	
 	//loop through the returned timestamps
 	while ($row = mysqli_fetch_array($result_time)) {
 		$time = $time . '"'. $row['Timestamp'].'",';
 	}
-	
-	//loop through the returned temperature timestamps
-	while ($row = mysqli_fetch_array($result_temp_time)) {
-		$temp_time = $temp_time . '"'. $row['Timestamp'].'",';
-	}
-	
-	//loop through the returned pressure timestamps
-	while ($row = mysqli_fetch_array($result_pres_time)) {
-		$pres_time = $pres_time . '"'. $row['Timestamp'].'",';
-	}
-	
-	//echo date('Y-m-d H:i:s');
 ?>
 
 <!DOCTYPE html>
@@ -121,7 +74,7 @@
 	    <h1>TEMPERATURE AND PRESSURE GRAPH</h1>       
 			<canvas id="chart" style="width: 100%; height: 65vh; background: #222; border: 1px solid #555652; margin-top: 10px;"></canvas>
 			<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-			<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>-->
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js" integrity="sha512-UXumZrZNiOwnTcZSHLOfcTs0aos2MzBWHXOHOuB0J/R44QB0dwY5JgfbvljXcklVf65Gc4El6RjZ+lnwd2az2g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/1.1.1/chartjs-plugin-zoom.min.js" integrity="sha512-NxlWEbNbTV6acWnTsWRLIiwzOw0IwHQOYUCKBiu/NqZ+5jSy7gjMbpYI+/4KvaNuZ1qolbw+Vnd76pbIUYEG8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
@@ -130,7 +83,7 @@
     			var temperatureChart = new Chart(ctx, {
 					type: 'line',
 					data: {
-						labels: [<?php echo $pres_time; ?>],
+						labels: [<?php echo $time; ?>],
 						datasets: 
 						[{
 							label: 'Temperature (°C)',
@@ -139,8 +92,7 @@
 							backgroundColor: 'transparent',
 							borderColor: 'rgba(255,99,132)',
 							borderWidth: 1,
-							pointRadius: 0,
-							labels: [<?php echo $temp_time; ?>]
+							pointRadius: 0
 						},
 						
 						{
@@ -150,8 +102,7 @@
 							backgroundColor: 'transparent',
 							borderColor: 'rgba(0,255,255)',
 							borderWidth: 1,
-							pointRadius: 0,
-							labels: [<?php echo $pres_time; ?>]
+							pointRadius: 0
 						}],
 					},
 				 

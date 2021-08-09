@@ -1,0 +1,44 @@
+body{
+	background-color: #1e1e1e;
+}
+
+h1{
+	color: #fff;
+	font-family: "Times New Roman", Times, serif;
+	margin-left: 60px;
+	margin-top: 60px;
+	font-size: 40px;
+}
+
+p{
+	color: #ccc;
+	font-family: "Times New Roman", Times, serif;
+	margin-left: 60px;
+	margin-top: 10px;
+	font-size: 17px;
+}
+
+
+ul{
+	color: #fff;
+	font-family: "Times New Roman", Times, serif;
+	margin-left: 60px;
+}
+			
+a{
+	color: #ccc;
+}
+
+.centerHead{
+	position: relative;
+	width: 97%;
+	text-align: center;
+}
+
+.centerExtra{
+	text-align: center;
+}
+
+table, th, td {
+  	border: 1px solid white;
+}
