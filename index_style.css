@@ -10,6 +10,13 @@ h1{
 	font-size: 40px;
 }
 
+h2{
+	color: #fff;
+	font-family: "Times New Roman", Times, serif;
+	margin-left: 60px;
+	margin-top: 60px;
+}
+
 p{
 	color: #ccc;
 	font-family: "Times New Roman", Times, serif;
@@ -39,6 +46,7 @@ a{
 	text-align: center;
 }
 
-table, th, td {
+table, th, td{
   	border: 1px solid white;
+	color: #ccc;
 }
