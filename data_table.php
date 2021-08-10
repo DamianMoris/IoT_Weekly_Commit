@@ -10,7 +10,7 @@
  <body>
   <div class="container" align="center">
    <br />
-   <h1 style="font-family: "Times New Roman", Times, serif;">Filter Data from Database</h1><br />
+   <h1>Filter Data from Database</h1><br />
    <div class="form-group">
 	<div class="input-group">
 		<span class="input-group-addon">Search Data</span>
